@@ -1,0 +1,19 @@
+{
+  "name": "nodemarketanalyzer",
+  "version": "1.0.0",
+  "description": "A set of node scripts to analyze market stocks values",
+  "main": "main.js",
+  "scripts": {
+    "test": "test "
+  },
+  "keywords": [
+    "stocks",
+    "market",
+    "analyzer"
+  ],
+  "author": "Guillermo Baldán",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.6.5"
+  }
+}
