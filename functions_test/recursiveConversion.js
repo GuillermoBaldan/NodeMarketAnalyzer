@@ -10,8 +10,7 @@ function convertirTimestamp(timestamp) {
         const lowerCaseKey = key.toLowerCase();
         if (lowerCaseKey.includes('timestamp') || lowerCaseKey.includes('date')) {
           objeto[key] = convertirTimestamp(objeto[key]);
-          console.log(objeto[key])
-        }
+                 }
       } else if (typeof objeto[key] === 'object') {
         convertirTimestampsEnObjeto(objeto[key]);
       }
