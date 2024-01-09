@@ -1,6 +1,5 @@
 function isTimestamp(value) {
-  const referenceDate = new Date('1602-01-01').getTime();
-  return Number.isInteger(value) && value >= referenceDate;
+   return Number.isInteger(value) && value >= 0;
 }
 
 function timeStampConvert(timestamp) {
