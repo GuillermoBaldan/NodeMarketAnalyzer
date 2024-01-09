@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const { findLargestConsecutiveDecrease, calculateLossPercentage } = require('./Statistical functions.js');
 
 const ticket = process.argv[2];
 
@@ -18,28 +19,13 @@ fs.readFile(filePath, 'utf8', (err, data) => {
   }
 
   const jsonData = JSON.parse(data);
-  const days = jsonData.length;
-  
-  let consecutiveDays = 0;
-  let maxConsecutiveDays = 0;
-  let startDate = '';
-  let endDate = '';
 
-  for (let i = 0; i < days; i++) {
-    if (jsonData[i].close < jsonData[i].open) {
-      if (consecutiveDays === 0) {
-        startDate = jsonData[i].dateTime;
-      }
-      consecutiveDays++;
-      if (consecutiveDays > maxConsecutiveDays) {
-        maxConsecutiveDays = consecutiveDays;
-        endDate = jsonData[i].dateTime;
-      }
-    } else {
-      consecutiveDays = 0;
-    }
-  }
+  const { maxConsecutiveDays, startDate, endDate } = findLargestConsecutiveDecrease(jsonData);
 
   console.log(`The greatest number of consecutive days with closing below opening for ${ticket} is: ${maxConsecutiveDays}`);
   console.log(`Date range: From ${startDate} to ${endDate}`);
+
+  const dateToCheck = startDate; // Reemplaza esta fecha con la fecha que quieras verificar
+  const lossPercentage = calculateLossPercentage(dateToCheck, jsonData);
+  console.log(`Loss percentage for ${dateToCheck}: ${lossPercentage.toFixed(2)}%`);
 });
