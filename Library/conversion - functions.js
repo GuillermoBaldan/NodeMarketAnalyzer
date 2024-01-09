@@ -8,7 +8,34 @@ function timeStampConvert(timestamp) {
   return fechaLegible;
 }
 
-function convertirTimestamps(objeto, propiedadesAConvertir) {
+function convertirTimestamps(objeto, propiedadesAConvertir) {const axios = require('axios');
+const fs = require('fs').promises;
+
+const options = {
+  method: 'GET',
+  url: 'https://real-time-quotes1.p.rapidapi.com/api/v1/historical/stock',
+  params: {
+    interval: '1day',
+    symbol: 'AAPL'
+  },
+  headers: {
+    'X-RapidAPI-Key': 'e2b40e9641mshb911dd1b182aae5p1ffaa9jsn8708248161f7',
+    'X-RapidAPI-Host': 'real-time-quotes1.p.rapidapi.com'
+  }
+};
+
+async function fetchDataAndSaveToFile() {
+  try {
+    const response = await axios.request(options);
+    await fs.writeFile('data_stock_Real-time-quotes.json', JSON.stringify(response.data, null, 2));
+    console.log('Data has been saved to data_stock_Real-time-quotes.json');
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+fetchDataAndSaveToFile();
+
   const nuevoObjeto = {};
   for (let propiedad in objeto) {
     if (Array.isArray(objeto[propiedad])) {
