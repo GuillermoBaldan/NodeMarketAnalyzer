@@ -1,6 +1,6 @@
 const axios = require('axios');
 const fs = require('fs').promises;
-const { rapidAPIKey_realTimeQuotes } = require('./config');
+const { rapidAPIKey_realTimeQuotes } = require('../config');
 
 const options = {
   method: 'GET',
@@ -10,7 +10,7 @@ const options = {
     symbol: 'AAPL'
   },
   headers: {
-    'X-RapidAPI-Key': realTimeQuotesAPIkey,
+    'X-RapidAPI-Key': rapidAPIKey_realTimeQuotes,
     'X-RapidAPI-Host': 'real-time-quotes1.p.rapidapi.com'
   }
 };
