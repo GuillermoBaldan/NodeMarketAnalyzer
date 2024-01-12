@@ -4,7 +4,7 @@ NodeMarketAnalyzer is a collection of Node scripts designed for processing and a
 
 ## Scripts
 
-1. **analyzer.js**: This script performs [add brief description].
+1. **analyzer.js**: This script performs statistical analysis on stock market data stored in a specific JSON file. It parses the JSON content and carries out various statistical operations using the imported functions. The results, including the frequency of consecutive decrease series, the longest consecutive days with closing below opening, and the loss percentage for a specific date, are printed to the console.
 
 2. **dataFromTicket.js**: [add brief description].
 
