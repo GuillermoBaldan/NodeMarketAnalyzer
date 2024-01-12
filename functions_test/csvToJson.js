@@ -3,12 +3,12 @@ const csv = require('csv-parser');
 
 const results = [];
 
-fs.createReadStream('./data_test/AAPL.csv')
+fs.createReadStream('./data_test/SP500.csv')
   .pipe(csv())
   .on('data', (data) => results.push(data))
   .on('end', () => {
     const jsonData = JSON.stringify(results, null, 2);
-    fs.writeFile('AAPL_Max_data.json', jsonData, (err) => {
+    fs.writeFile('SP500.json', jsonData, (err) => {
       if (err) {
         console.error('Error writing JSON file:', err);
       } else {
